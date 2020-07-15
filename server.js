@@ -7,7 +7,7 @@ const authentication = require('./routes/authentication.js');
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:8080'
+    origin: process.env.CORS_ORIGIN
 }
 
 app.use(cors(corsOptions))

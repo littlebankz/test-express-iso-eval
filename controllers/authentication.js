@@ -1,7 +1,6 @@
 const moment = require('moment')
 const crypto = require('crypto')
 const mysql = require('mysql')
-console.log(process.env.MYSQL_HOST)
 const db = mysql.createConnection({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
