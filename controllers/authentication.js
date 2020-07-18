@@ -94,7 +94,7 @@ exports.checkCredential = (req, res, next) => {
 // @route   GET /api/login/authtoken
 // @access  Public
 exports.checkAuthToken = (req, res, next) => {
-    const { username, token } = req.body;
+    const { username, authToken } = req.body;
 
     let sql = `SELECT tokens.token, tokens.created FROM tokens WHERE username = ?`;
     db.query(sql, [username], (error, result) => {
@@ -102,7 +102,7 @@ exports.checkAuthToken = (req, res, next) => {
 
         let isValid = false
         if (result.length == 1) {
-            if (token == result[0].token) {
+            if (authToken == result[0].token) {
                 let expired = moment(result[0].created).add(30, 'days')
                 if (moment().isAfter(expired)) {
                     isValid = false
@@ -117,6 +117,5 @@ exports.checkAuthToken = (req, res, next) => {
         }
 
         res.send({isValid})
-        console.log(isValid)
     })
 }
