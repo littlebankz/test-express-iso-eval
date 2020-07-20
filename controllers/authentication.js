@@ -52,6 +52,7 @@ exports.checkCredential = (req, res, next) => {
                     let ret = {
                         username: username,
                         authToken: generatedToken,
+                        role: role
                     }
                     console.log('Insert 1 new token.')
                     res.send(ret)
@@ -68,6 +69,7 @@ exports.checkCredential = (req, res, next) => {
                         let ret = {
                             username: username,
                             authToken: generatedToken,
+                            role: role
                         }
                         console.log('Renew 1 new token.')
                         res.send(ret)
@@ -78,6 +80,7 @@ exports.checkCredential = (req, res, next) => {
                     let ret = {
                         username: username,
                         authToken: token,
+                        role: role
                     }
                     console.log('1 Old token retreived')
                     res.send(ret)
