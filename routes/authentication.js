@@ -1,13 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { checkCredential, checkAuthToken } = require('../controllers/authentication');
+const {
+  checkCredential,
+  checkAuthToken,
+  deleteAuthToken,
+} = require("../controllers/authentication");
 
-router
-    .route('/')
-    .post(checkCredential);
+router.route("/").post(checkCredential);
 
-router
-    .route('/authtoken')
-    .post(checkAuthToken);
-    
+router.route("/").delete(deleteAuthToken);
+
+router.route("/authtoken").post(checkAuthToken);
+
 module.exports = router;
